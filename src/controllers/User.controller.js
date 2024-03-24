@@ -12,6 +12,6 @@ export default class UserController {
 	}
 	postLogin(req, res) {
 		let jobs = JobsModel.get();
-		res.render('jobs')
+		res.render('jobs', jobs)
 	}
 }

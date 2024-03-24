@@ -1,0 +1,20 @@
+<div class="container border-rounded job-detail-container mt-3">
+	<h3 class="text-center"><b><%= jobs.tech %></b> Oppurtunity at <b class="text-danger"><%= jobs.CompanyName %></b> in <b><%= jobs.place %></b></h3>
+
+	<div class="job-detail-action-btns d-flex align-items-center mt-5">
+		<span class="bg-warning p-2 rounded text-black me-5">Actively Hiring <i class="fa-solid fa-arrow-up-right-dots"></i></span>
+		<a href="/update_job/<%= jobs.id %>"><i title="Edit" class="fa-solid fa-pen-to-square fa-2x text-warning me-4"></i></a>
+		<i title="Delete" class="fa-solid fa-trash fa-2x text-danger"></i>
+	</div>
+
+	<h4 class="card-title mt-3"><%= jobs.CompanyName %></h4>
+	<h5 class="job-card-tech mt-3">Tech: <span class="text-info"><%= jobs.tech %></span></h5>
+	<h5 class="job-card-location mt-3"><i class="fa-solid fa-location-dot"></i> <%= jobs.place %></h5>
+	<h6 class="job-card-salary mt-3"><%= jobs.salary %></h6>
+	<ul class="job-card-skills mt-3">
+		<% jobs.skills.split(',').forEach(skill => { %>
+			<li class="me-2 btn btn-outline-tertiary"><%= skill.trim() %></li>
+		<% }) %>
+	</ul>			
+	<a href="#" class="btn btn-primary w-25 mt-3">Apply Now</a>
+</div>

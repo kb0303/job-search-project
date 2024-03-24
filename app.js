@@ -22,8 +22,10 @@ const jobsController = new JobsController()
 
 server.get('/', homePageController.getHomePage);
 server.post('/register', userController.postRegister);
-server.get('/login', userController.getLogin)
-server.get('/jobs', jobsController.getJobs)
+server.get('/login', userController.getLogin);
+server.get('/jobs', jobsController.getJobs);
+server.get('/job/:id', jobsController.getJobDetail);
+server.get('/update_job/:id', jobsController.updateJob);
 
 server.use(express.static('public'));
 server.use(express.static('src/Views'));

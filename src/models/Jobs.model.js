@@ -13,7 +13,7 @@ export class JobsModel {
 	}
 
 	static add(CompanyName, tech, place, salary, skills) {
-		let newJob = new ProductModel(
+		let newJob = new JobsModel(
 			jobs.length + 1,
 			CompanyName,
 			tech,

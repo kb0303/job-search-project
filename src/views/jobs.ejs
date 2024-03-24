@@ -1,9 +1,18 @@
-<div class="card" style="width: 18rem;">
-	<div class="card-body">
-	  <h5 class="card-title">Coding Ninjas</h5>
-	  <h3>Tech: <span class="text-info">SDE</span></h3>
-	  <p class="job-card-location"><i class="fa-solid fa-location-dot"></i> Gurugram</p>
-	  <p class="card-text"></p>
-	  <a href="#" class="btn btn-outline-success">View Details</a>
+<div class="row mt-5">
+	<% jobs.forEach(job => { %>
+	<div class="card bg-dark text-light border-3 border-warning col-4 m-auto" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title text-warning"><%= job.CompanyName %></h5>
+			<p class="job-card-tech">Tech: <span class="text-info"><%= job.tech %></span></p>
+			<p class="job-card-location"><i class="fa-solid fa-location-dot"></i> <%= job.place %></p>
+			<p class="job-card-salary"><%= job.salary %></p>
+			<ul class="job-card-skills">
+				<% job.skills.split(',').forEach(skill => { %>
+					<li><%= skill.trim() %></li>
+				<% }) %>
+			</ul>			
+			<a href="/job/<%= job.id %>" class="btn btn-outline-success w-100">View Details</a>
+		</div>
 	</div>
-  </div>
+	<% }) %>
+</div>
