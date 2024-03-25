@@ -4,7 +4,7 @@
 	<div class="job-detail-action-btns d-flex align-items-center mt-5">
 		<span class="bg-warning p-2 rounded text-black me-5">Actively Hiring <i class="fa-solid fa-arrow-up-right-dots"></i></span>
 		<a href="/update_job/<%= jobs.id %>"><i title="Edit" class="fa-solid fa-pen-to-square fa-2x text-warning me-4"></i></a>
-		<i title="Delete" class="fa-solid fa-trash fa-2x text-danger"></i>
+		<i title="Delete" onclick="deleteProduct('<%= jobs.id %>')" class="fa-solid fa-trash fa-2x text-danger"></i>
 	</div>
 
 	<h4 class="card-title mt-3"><%= jobs.CompanyName %></h4>

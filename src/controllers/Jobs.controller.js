@@ -15,7 +15,7 @@ export default class JobsController {
 		}
 	}
 
-	updateJob(req, res){
+	updateJob(req, res) {
 		const id = req.params.id;
 		const jobFound = JobsModel.getById(id);
 		if (jobFound) {
@@ -23,5 +23,27 @@ export default class JobsController {
 		} else {
 			res.status(401).send("Job not found, can't be updated")
 		}
+	}
+
+	postUpdateJob(req, res) {
+		const id = req.params.id;
+		const jobFound = JobsModel.getById(id);
+		JobsModel.update(req.body);
+		res.render('jobDetails', { jobs: jobFound })
+	}
+
+	deleteJob(req, res) {
+		const id = req.params.id;
+		const jobFound = JobsModel.getById(id)
+		if (!jobFound) {
+			return res.status(401).send("Job Not Found");
+		}
+		JobsModel.delete(id)
+		var jobs = JobsModel.get()
+		console.log(jobs)
+		res.render('jobs', {
+			jobs,
+			userEmail: req.session.userEmail
+		})
 	}
 }

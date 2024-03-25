@@ -1,4 +1,10 @@
-<form action="/login" method="post">
+<h1 class="text-center mt-5">Login As A Recruiter</h1>
+<form action="/login" method="post" class="bg-primary-subtle rounded p-4 text-dark mt-3">
+	<% if(errorMessage) { %>
+		<div class="alert alert-warning login-error" role="alert">
+		<%= errorMessage %>
+		</div>
+	<% } %>
 	<div class="mb-3">
 		<label for="exampleInputEmail1" class="form-label">Email address</label>
 		<input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -8,9 +14,6 @@
 		<label for="exampleInputPassword1" class="form-label">Password</label>
 		<input type="password" class="form-control" name="password" id="exampleInputPassword1">
 	</div>
-	<div class="mb-3 form-check">
-		<input type="checkbox" class="form-check-input" id="exampleCheck1">
-		<label class="form-check-label" for="exampleCheck1">Check me out</label>
-	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
+	<p class="mb-0 mt-3">New User? <a href="/register">Sign Up</a> Here</p>
 </form>

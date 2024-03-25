@@ -4,6 +4,9 @@ import expressEjsLayouts from 'express-ejs-layouts';
 import HomePageController from './src/controllers/HomePage.controller.js';
 import UserController from './src/controllers/User.controller.js';
 import JobsController from './src/controllers/Jobs.controller.js';
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import { auth } from './src/middleware/auth.middleware.js';
 
 const server = express();
 
@@ -15,17 +18,37 @@ server.set("view engine", "ejs");
 server.set("views", path.join(path.resolve(), 'src', 'Views'));
 
 server.use(expressEjsLayouts);
+server.use(session({
+	secret: 'SECRET',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: false }
+}));
+server.use(cookieParser());
 
 const homePageController = new HomePageController()
-const userController = new UserController() 
+const userController = new UserController()
 const jobsController = new JobsController()
 
+// Home Page Routes
 server.get('/', homePageController.getHomePage);
+
+// Register Routes
+server.get('/register', userController.getRegister);
 server.post('/register', userController.postRegister);
+
+// Login Routes
 server.get('/login', userController.getLogin);
+server.post('/login', userController.postLogin);
+
+// Job and Job-detail Routes
 server.get('/jobs', jobsController.getJobs);
 server.get('/job/:id', jobsController.getJobDetail);
-server.get('/update_job/:id', jobsController.updateJob);
+
+// Update Routes
+server.get('/update_job/:id', auth, jobsController.updateJob);
+server.post('/update_job', jobsController.postUpdateJob)
+server.post('/delete_job/:id', auth, jobsController.deleteJob);
 
 server.use(express.static('public'));
 server.use(express.static('src/Views'));
