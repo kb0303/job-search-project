@@ -1,25 +1,29 @@
 export class JobsModel {
-	constructor(id, CompanyName, tech, place, salary, skills) {
+	constructor(id, CompanyName, tech, place, salary, skills, applyBy, openings) {
 		this.id = id;
 		this.CompanyName = CompanyName;
 		this.tech = tech;
 		this.place = place;
 		this.salary = salary;
 		this.skills = skills;
+		this.applyBy = applyBy;
+		this.openings = openings;
 	}
 
 	static get() {
 		return jobs;
 	}
 
-	static add(CompanyName, tech, place, salary, skills) {
+	static add(CompanyName, tech, place, salary, skills, applyBy, openings) {
 		let newJob = new JobsModel(
 			jobs.length + 1,
 			CompanyName,
 			tech,
 			place,
 			salary,
-			skills
+			skills,
+			applyBy,
+			openings
 		)
 		jobs.push(newJob);
 	}
@@ -32,11 +36,17 @@ export class JobsModel {
 		return jobs.find(p => p.id == id);
 	}
 	static delete(id) {
-		const index = jobs.findIndex((p)=>p.id == id)
+		const index = jobs.findIndex((p) => p.id == id)
 		jobs.splice(index, 1);
 	}
+	static formatDateForInputDate(dateString) {
+		const parts = dateString.split('-');
+		const day = parts[0];
+		const month = parts[1];
+		const year = parts[2];
+		return `${year}-${month}-${day}`;
+	}
 
-	
 }
 
 var jobs = [
@@ -46,7 +56,9 @@ var jobs = [
 		'React Developer',
 		'Delhi',
 		'250k-300k',
-		'React, HTML, CSS, JS, Problem Solving'
+		'React, HTML, CSS, JS, Problem Solving',
+		"30-03-2024",
+		5
 	),
 	new JobsModel(
 		2,
@@ -54,7 +66,9 @@ var jobs = [
 		'Angular Developer',
 		'Gurugram',
 		'150k-200k',
-		'Angular, HTML, CSS, JS, Deployment'
+		'Angular, HTML, CSS, JS, Deployment',
+		"01-04-2024",
+		10
 	),
 	new JobsModel(
 		3,
@@ -62,6 +76,8 @@ var jobs = [
 		'Vue Developer',
 		'Noida',
 		'500k-800k',
-		'Vue, HTML, CSS, JS, AWS, GCP'
+		'Vue, HTML, CSS, JS, AWS, GCP',
+		"29-03-2024",
+		3
 	)
 ]

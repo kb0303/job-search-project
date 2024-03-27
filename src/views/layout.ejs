@@ -29,16 +29,23 @@
 						<a class="nav-link" href="/jobs">Jobs</a>
 					</li>
 					<li class="nav-item dropdown">
+						<% if(userName) { %>
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							<%= userName %>
+						</a>
+						<% } else { %>
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 							aria-expanded="false">
 							Recruiter
 						</a>
+						<% } %>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="/login">Login</a></li>
 							<li>
 								<hr class="dropdown-divider">
 							</li>
-							<li><a class="dropdown-item" href="#">Post a new job</a></li>
+							<li><a class="dropdown-item" href="/add_job">Post a new job</a></li>
 						</ul>
 					</li>
 				</ul>

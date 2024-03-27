@@ -1,0 +1,47 @@
+<div class="update-product-container">
+	<h1 class="text-center text-light">Update Job</h1>
+	
+	<% if(errorMessage){ %>
+	<div class="alert alert-danger" role="alert">
+		<%= errorMessage %>
+	</div>
+	<% } %>
+	<form action="/update_job" method="post">
+		<input type="hidden" class="form-control" id="id" name="id" value="<%= jobs.id %>">
+	
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="CompanyName" name="CompanyName" placeholder="Company Name" value="<%= jobs.CompanyName %>">
+			<label for="floatingInput">Company Name</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="tech" name="tech" placeholder="Company tech" value="<%= jobs.tech %>">
+			<label for="floatingInput">Tech</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="place" name="place" placeholder="Company place" value="<%= jobs.place %>">
+			<label for="floatingInput">Place</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="salary" name="salary" placeholder="Job salary" value="<%= jobs.salary %>">
+			<label for="floatingInput">Salary</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="date" class="form-control" id="applyBy" name="applyBy" placeholder="applyBy" value="<%= formattedApplyBy %>">
+			<label for="floatingInput">Apply By</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="skills" name="skills" placeholder="applyBy" value="<%= jobs.skills %>">
+			<label for="floatingInput">Skills</label>
+		</div>
+		<div class="form-floating mt-3">
+			<input type="text" class="form-control" id="openings" name="openings" placeholder="openings" value="<%= jobs.openings %>">
+			<label for="floatingInput">Openings</label>
+		</div>
+		<!-- <div class="form-floating mt-3">
+			<input type="text" class="form-control" id="skills" name="skills" placeholder="Job skills" value="<%= jobs.skills %>">
+			<label for="floatingInput">jobs.skills</label>
+		</div> -->
+	
+		<button class="btn btn-warning mt-5">Update Job</button>
+	</form>
+	</div>

@@ -45,10 +45,17 @@ server.post('/login', userController.postLogin);
 server.get('/jobs', jobsController.getJobs);
 server.get('/job/:id', jobsController.getJobDetail);
 
+
 // Update Routes
 server.get('/update_job/:id', auth, jobsController.updateJob);
-server.post('/update_job', jobsController.postUpdateJob)
+server.post('/update_job', jobsController.postUpdateJob);
+
+// Delete Routes
 server.post('/delete_job/:id', auth, jobsController.deleteJob);
+
+//Add Routes
+server.get('/add_job', auth, jobsController.getAddJob)
+server.post('/add_job', auth, jobsController.postAddJob)
 
 server.use(express.static('public'));
 server.use(express.static('src/Views'));
