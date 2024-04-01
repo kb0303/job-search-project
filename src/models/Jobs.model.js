@@ -8,6 +8,14 @@ export class JobsModel {
 		this.skills = skills;
 		this.applyBy = applyBy;
 		this.openings = openings;
+		this.applicants = []; // Initialize applicants array for each job
+	}
+	addApplicant(applicant) {
+		this.applicants.push(applicant);
+	}
+
+	getApplicants() {
+		return this.applicants;
 	}
 
 	static get() {

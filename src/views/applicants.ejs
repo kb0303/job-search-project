@@ -1,0 +1,23 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">SNo</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Contact No</th>
+			<th scope="col">Resume</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% applicants.forEach(applicant => { %>
+			<tr>
+				<th scope="row"><%= applicant.id %></th>
+				<td><%= applicant.name %></td>
+				<td><%= applicant.email %></td>
+				<td><%= applicant.contactNo %></td>
+				<td><a class="btn btn-primary" href="/<%= applicant.resume %>" target="_blank">View</a></td>
+			</tr>
+		<% }) %>
+		
+	</tbody>
+</table>

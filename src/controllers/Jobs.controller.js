@@ -13,14 +13,14 @@ export default class JobsController {
 		// Retrieve userEmail from session or wherever it's stored
 		const userEmail = req.session.userEmail;
 		if (jobFound) {
-			res.render("jobDetails", { jobs: jobFound, userEmail: req.session.userEmail, userName: req.session.userName, formattedApplyBy: formattedApplyBy })
+			res.render("jobDetails", { jobs: jobFound, applicants: jobFound.getApplicants(),  userEmail: req.session.userEmail, userName: req.session.userName, formattedApplyBy: formattedApplyBy })
 		} else {
 			res.status(401).send("Job not found");
 		}
 	}
 
 	getAddJob(req, res) {
-		res.render('add_job', {userEmail: req.session.userEmail, userName: req.session.userName})
+		res.render('add_job', { userEmail: req.session.userEmail, userName: req.session.userName })
 	}
 
 	postAddJob(req, res) {

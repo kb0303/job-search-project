@@ -4,9 +4,12 @@ import expressEjsLayouts from 'express-ejs-layouts';
 import HomePageController from './src/controllers/HomePage.controller.js';
 import UserController from './src/controllers/User.controller.js';
 import JobsController from './src/controllers/Jobs.controller.js';
+import ApplicantsController from './src/controllers/Applicants.controller.js';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import { auth } from './src/middleware/auth.middleware.js';
+import { uploadResume } from './src/middleware/resumeUpload.middleware.js';
+import { resumeValidation } from './src/middleware/resumeValidation.middleware.js';
 
 const server = express();
 
@@ -29,6 +32,7 @@ server.use(cookieParser());
 const homePageController = new HomePageController()
 const userController = new UserController()
 const jobsController = new JobsController()
+const applicantsController = new ApplicantsController()
 
 // Home Page Routes
 server.get('/', homePageController.getHomePage);
@@ -56,6 +60,10 @@ server.post('/delete_job/:id', auth, jobsController.deleteJob);
 //Add Routes
 server.get('/add_job', auth, jobsController.getAddJob)
 server.post('/add_job', auth, jobsController.postAddJob)
+
+// Job Application Routes
+server.get('/applicants/:id', auth, applicantsController.getJobApplication)
+server.post('/job_application', uploadResume.single('resume'), resumeValidation, applicantsController.postJobApplication)
 
 server.use(express.static('public'));
 server.use(express.static('src/Views'));
