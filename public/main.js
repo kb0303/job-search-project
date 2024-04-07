@@ -16,4 +16,4 @@ function formatDateForInputDate(dateString) {
 	const month = parts[1];
 	const year = parts[2];
 	return `${year}-${month}-${day}`; // Rearrange the parts to match YYYY-MM-DD format
-}
+}	

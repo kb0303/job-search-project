@@ -1,18 +1,20 @@
-<div class="container col-xxl-12 px-4 py-5">
+<div class="container col-xxl-12 px-4">
 	<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
 		<div class="col-10 col-sm-8 col-lg-6">
-			<img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700"
+			<img src="./Analytics.png" class="d-block mx-lg-auto img-fluid floating" alt="Bootstrap Theme" width="700"
 				height="500" loading="lazy">
 		</div>
 		<div class="col-lg-6">
-			<h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-			<p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
-				popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
-				extensive prebuilt components, and powerful JavaScript plugins.</p>
-			<div class="d-grid gap-2 d-md-flex justify-content-md-start">
-				<button type="button" class="btn btn-primary btn-lg px-4 me-md-2" fdprocessedid="yyvpa">I'm a Job
+			<h1 class="display-5 fw-bold text-white lh-1 underline-heading">
+				<span class="underline">Seek<img src="./underline.png"></span>,
+				<span class="underline">Explore<img src="./underline.png"></span>,
+				<span class="underline">Thrive<img src="./underline.png"></span>
+			</h1>
+			<p class="lead" id="typewriter"></p>
+			<div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2">
+				<button type="button" class="job-btn px-4 py-2 me-2" fdprocessedid="yyvpa">I'm a Job
 					Seeker</button>
-				<button type="button" class="btn btn-outline-secondary btn-lg px-4" type="button" data-bs-toggle="modal"
+				<button type="button" class="recruiter-btn px-4 py-2" type="button" data-bs-toggle="modal"
 					data-bs-target="#exampleModal">I'm a
 					Recruiter</button>
 			</div>
@@ -23,8 +25,9 @@
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content bg-black text-white">
 					<div class="modal-header ">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Register as recruiter</h1>
+						<button type="button" class="modal-close-btn" data-bs-dismiss="modal"
+							aria-label="Close">+</button>
 					</div>
 					<div class="modal-body">
 						<form action="/register" method="post">
@@ -54,3 +57,35 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	const texts = [
+		"Discover diverse job opportunities.",
+		"Connect with top talent.",
+		"Post vacancies across industries."
+	];
+
+	let currentTextIndex = 0;
+	let currentCharIndex = 0;
+	let isDeleting = false;
+
+	function typeWriter() {
+		const currentText = texts[currentTextIndex];
+		if (!isDeleting && currentCharIndex < currentText.length) {
+			document.getElementById("typewriter").innerHTML += currentText.charAt(currentCharIndex);
+			currentCharIndex++;
+		} else if (isDeleting && currentCharIndex >= 0) {
+			document.getElementById("typewriter").innerHTML = currentText.substring(0, currentCharIndex);
+			currentCharIndex--;
+		} else {
+			isDeleting = !isDeleting;
+			if (!isDeleting) {
+				currentTextIndex = (currentTextIndex + 1) % texts.length;
+			}
+		}
+		setTimeout(typeWriter, 100); // Adjust the speed here (in milliseconds)
+	}
+
+	// Call the function
+	typeWriter();
+</script>

@@ -14,18 +14,106 @@
 	color: white;
 	box-shadow: 0 0 1px 0 white;
 }
+
 .job-card-skills li:hover {
 	box-shadow: 0 0 5px 0 white;
 }
-
+.logo-img {
+	margin-left: 20px;
+	height: 50px;
+	width: auto;
+	object-fit: contain;
+}
 .navbar {
 	box-shadow: 0 0 6px 0 white;
 }
+
 .job-detail-action-btns i {
 	opacity: 0.9;
 	cursor: pointer;
 }
+
 .job-detail-action-btns i:hover {
 	transform: scale(0.95);
 	opacity: 1;
+}
+
+.job-btn {
+	background-color: #ff8b37;
+	font-weight: 600;
+	border: none;
+	border-radius: 6px;
+	transition: 0.1s all ease-in-out;
+}
+
+.job-btn:hover {
+	background-color: #ff9c55;
+	transform: scale(0.99);
+}
+
+.recruiter-btn {
+	font-weight: 600;
+	border: none;
+	border-radius: 6px;
+	background-color: #ffff;
+	transition: 0.1s all ease-in-out;
+}
+
+.recruiter-btn:hover {
+	background-color: #e1e1e1;
+	transform: scale(0.99);
+}
+
+.modal-close-btn {
+	position: absolute;
+	right: 20px;
+	transform: rotate(45deg);
+	font-size: 2.2rem;
+	color: white;
+	background-color: transparent;
+	border: none;
+}
+
+
+.floating {
+	animation-name: floating;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+
+@keyframes floating {
+	0% {
+		transform: translate(0, 0px);
+	}
+
+	50% {
+		transform: translate(0, 15px);
+	}
+
+	100% {
+		transform: translate(0, -0px);
+	}
+}
+
+#typewriter {
+	height: 30px;
+}
+.underline-heading {
+	margin-bottom: 40px;
+}
+.underline {
+	position: relative;
+}
+
+.underline img {
+	height: 20px;
+	width: 100%;
+	position: absolute;
+	bottom: -17px;
+	left: 0;
+	filter: invert(1);
+	opacity: 0.5;
 }
